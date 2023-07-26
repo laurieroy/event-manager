@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+
 import Header from "./Header";
 
 const Editor = () => {
@@ -31,7 +33,17 @@ const Editor = () => {
       <Header />
       {isError && <p>Something went wrong. check the console</p>}
 
-      {isLoading ? <p>Loading...</p> : <EventList event={events} />}
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          {" "}
+          <EventList event={events} />
+          <Routes>
+            <Route path=":id" element={<Event events={events} />} />
+          </Routes>
+        </>
+      )}
     </>
   );
 };
