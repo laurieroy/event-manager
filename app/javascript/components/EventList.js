@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from "prop-types";
 
 const EventList = ({ events }) => {
@@ -6,9 +7,11 @@ const EventList = ({ events }) => {
 
     return eventArray.map((event) => {
       <li key={event.id}>
-        {event.event_date}
-        {" - "}
-        {event.event_type}
+        <Link to={`/events/${event.id}`}>
+          {event.event_date}
+          {" - "}
+          {event.event_type}
+        </Link>
       </li>;
     });
   };
